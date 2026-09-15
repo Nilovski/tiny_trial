@@ -14,7 +14,7 @@ tapeout-2x2/
 ├── .github/workflows/             gds.yaml, test.yaml, docs.yaml -- copied from the shift-register repo
 ├── .devcontainer/                 optional local Docker/LibreLane dev environment
 ├── src/
-│   ├── tt_um_sahpar_gemm2x2.sv      top-level TT wrapper
+│   ├── tt_um_sahpar_gemm4x4.sv      top-level TT wrapper
 │   ├── rx_byte_interface.sv       host -> chip byte receiver
 │   ├── tx_byte_interface.sv       chip -> host byte sender
 │   ├── cmd_decoder_2x2.sv         opcode decoder, wires protocol to gemm_top
@@ -64,7 +64,7 @@ against the RTL as written.
 
 Ran `yosys` locally against the actual `sky130_fd_sc_hd__tt_025C_1v80.lib`
 (no Docker/OpenLane needed for this part -- just `apt install yosys` and the
-public liberty file). `hierarchy -top tt_um_sahpar_gemm2x2; proc; opt; techmap;
+public liberty file). `hierarchy -top tt_um_sahpar_gemm4x4; proc; opt; techmap;
 dfflibmap; abc -liberty ...; stat -liberty ...` on the full wrapper+decoder+
 gemm_top stack gives:
 

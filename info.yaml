@@ -1,27 +1,30 @@
 # Tiny Tapeout project information
 project:
-  title:        "2x2 integer output-stationary systolic GEMM (bring-up)"
+  title:        "4x4 integer output-stationary systolic GEMM (bring-up)"
   author:       "Sahpar Nil Ozer, Hasan Unlu"
   discord:      ""
-  description:  "Byte-serial host interface (LOAD_A/LOAD_B/CLEAR_GEMM/READ_C_ELEMENT/STATUS/ID) driving a 2x2 output-stationary integer systolic array. Bring-up stage ahead of the 8x8 BF16 accelerator."
+  description:  "Byte-serial host interface (LOAD_A/LOAD_B/CLEAR_GEMM/READ_C_ELEMENT/STATUS/ID) driving a 4x4 output-stationary integer systolic array. Bring-up stage ahead of the 8x8 BF16 accelerator."
   language:     "SystemVerilog"
   clock_hz:     10000000
 
-  # A single tile is about 167x108 uM. Raw synthesized standard-cell area for
-  # this design is 37,153 um^2 -- already >2x one tile before routing/tap/
-  # decap overhead. 2x2 (4 tiles) below is a placeholder pending a real
-  # hardening run; it may need to go up to 3x2/4x2.
+  # A single tile is about 167x108 uM (18,036 um^2). Raw synthesized
+  # standard-cell area for the 4x4 config is 139,972 um^2 -- at a realistic
+  # 45-62% placed utilization that needs roughly 250,000-310,000 um^2 of
+  # core, i.e. the LARGEST available option below (8x2, 16 tiles), possibly
+  # right at its edge. There is no bigger standard tile option after 8x2.
+  # If it doesn't fit even there, the design needs to shrink (fewer/narrower
+  # decoder state, or DATA_W/ACC_W reduction) before it can tape out as-is.
   # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2, 6x2 or 8x2
-  tiles: "2x2"
+  tiles: "8x2"
 
   # Your top module name must start with "tt_um_". Made unique with a github username-style tag:
-  top_module:  "tt_um_sahpar_gemm2x2"
+  top_module:  "tt_um_sahpar_gemm4x4"
 
   # List your project's source files here.
   # Source files must be in ./src and you must list each source file separately, one per line.
   # Don't forget to also update `PROJECT_SOURCES` in test/Makefile.
   source_files:
-    - "tt_um_sahpar_gemm2x2.sv"
+    - "tt_um_sahpar_gemm4x4.sv"
     - "rx_byte_interface.sv"
     - "tx_byte_interface.sv"
     - "cmd_decoder_2x2.sv"
