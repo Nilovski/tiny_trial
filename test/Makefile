@@ -42,7 +42,9 @@ VERILOG_SOURCES += $(PWD)/gate_level_netlist.v
 
 endif
 
-TOPLEVEL = tt_um_apex_gemm2x2
+# Include the testbench sources:
+VERILOG_SOURCES += $(PWD)/tb.v
+TOPLEVEL = tb
 COCOTB_TEST_MODULES = test_gemm2x2
 
 include $(shell cocotb-config --makefiles)/Makefile.sim
