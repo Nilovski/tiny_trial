@@ -1,7 +1,7 @@
 `default_nettype none
 
 // ---------------------------------------------------------------------------
-// tt_um_sahpar_gemm2x2 -- Tiny Tapeout top level for the 2x2 integer
+// tt_um_sahpar_gemm4x4 -- Tiny Tapeout top level for the 2x2 integer
 // output-stationary systolic GEMM bring-up (README.md milestone: "Implement
 // one systolic PE" / 2x2 stepping stone ahead of the 8x8 BF16 array).
 //
@@ -14,7 +14,7 @@
 //   uio[3] = TX_VALID   out  (chip asserts while uo_out holds an unread byte)
 //   uio[7:4] reserved, driven low
 // ---------------------------------------------------------------------------
-module tt_um_sahpar_gemm2x2 (
+module tt_um_sahpar_gemm4x4 (
     input  logic [7:0] ui_in,
     output logic [7:0] uo_out,
     input  logic [7:0] uio_in,
@@ -25,8 +25,8 @@ module tt_um_sahpar_gemm2x2 (
     input  logic       rst_n
 );
 
-    localparam int N      = 2;
-    localparam int K      = 2;
+    localparam int N      = 4;
+    localparam int K      = 4;
     localparam int DATA_W = 8;
     localparam int ACC_W  = 32;
 
