@@ -6,7 +6,7 @@ FST ?= -fst
 TOPLEVEL_LANG ?= verilog
 SRC_DIR = $(PWD)/../src
 PROJECT_SOURCES = \
-    tt_um_apex_gemm2x2.sv \
+    tt_um_sahpar_gemm2x2.sv \
     rx_byte_interface.sv \
     tx_byte_interface.sv \
     cmd_decoder_2x2.sv \

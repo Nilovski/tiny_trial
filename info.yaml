@@ -15,13 +15,13 @@ project:
   tiles: "2x2"
 
   # Your top module name must start with "tt_um_". Made unique with a github username-style tag:
-  top_module:  "tt_um_apex_gemm2x2"
+  top_module:  "tt_um_sahpar_gemm2x2"
 
   # List your project's source files here.
   # Source files must be in ./src and you must list each source file separately, one per line.
   # Don't forget to also update `PROJECT_SOURCES` in test/Makefile.
   source_files:
-    - "tt_um_apex_gemm2x2.sv"
+    - "tt_um_sahpar_gemm2x2.sv"
     - "rx_byte_interface.sv"
     - "tx_byte_interface.sv"
     - "cmd_decoder_2x2.sv"
